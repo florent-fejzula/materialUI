@@ -1,0 +1,90 @@
+.container {
+    border: 1px solid black;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+}
+
+.child {
+    border: 1px solid darkblue;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .sidenavItem {
+        margin: 10px 0px;
+        width: 100%;
+
+        .checkbox {
+            margin: 0 10px;
+            zoom: 1.2;
+            font-weight: bold;
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    
+    .exampleCard {
+        cursor: pointer;
+        max-width: 240px;
+        margin: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .cardHeader {
+            justify-content: center;
+            height: 64px;
+        }
+        
+        .imgDiv {
+            height: 140px;
+            
+            .mat-card-image {
+                margin: 0;
+                width: 100px;
+            }
+            
+            .mat-card-image:first-child {
+                margin-top: 0;
+            }
+        }
+
+        .cardContent {
+            padding: 10px;
+            text-align: justify;
+            text-align-last: center;
+            justify-content: center;
+            letter-spacing: 0.2px;
+            overflow: auto;
+            box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+        
+            p {
+                margin: 0;
+            }
+        }
+
+        .checkboxOverflowClass {
+            height: 124px;
+            overflow: auto;
+        }
+
+        .cardContentHeight {
+            height: 164px;
+            overflow: hidden;
+        }
+    }
+}
+
+.spinner {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
