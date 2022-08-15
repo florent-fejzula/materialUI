@@ -2,42 +2,42 @@
 
 <div class="container" *ngIf="loaded; else spinner">
   
-  <div class="child sidenav">
-
-    <div class="sidenavItem">
-      <mat-checkbox class="checkbox" [(ngModel)]="checked">
-        Smaller card height
-      </mat-checkbox>
-    </div>
-
-    <div class="sidenavItem">
-      <mat-form-field appearance="fill">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" (dateChange)="dateChanged($event)">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-    <div class="sidenavItem">
-      <h2>Today's date: {{ theDate }}</h2>
-    </div>
+  <div class="child">
+    <app-sidenav (sliderEvent)="getSlider($event)"></app-sidenav>
   </div>
 
-  <div class="child cards">
-    <mat-card class="exampleCard" *ngFor="let perfume of perfumes" (click)="openDialog()">
-      <mat-card-header class="cardHeader">
-        <mat-card-subtitle>{{perfume.brand}}</mat-card-subtitle>
-        <mat-card-title>{{perfume.name}}</mat-card-title>
-      </mat-card-header>
-      <div class="imgDiv">
-        <img mat-card-image [src]="perfume.imgSrc" alt="Phtaloblue">
-      </div>
-      <mat-card-content class="cardContent" [ngClass]="{'checkboxOverflowClass': checked, 'cardContentHeight': !checked}">
-        <p [innerHTML]="perfume.description"></p>
-      </mat-card-content>
-    </mat-card>
+  <div class="child">
+    <div class="tabs">
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Perfumes">
+          <div class="cards">
+            <mat-card class="exampleCard" *ngFor="let perfume of pageSlice">
+              <mat-card-header class="cardHeader">
+                <mat-card-subtitle>{{perfume.brand}}</mat-card-subtitle>
+                <mat-card-title>{{perfume.name}}</mat-card-title>
+              </mat-card-header>
+              <div class="imgDiv" (click)="openDialog(perfume)">
+                <img mat-card-image [src]="perfume.imgSrc[0]" alt="Phtaloblue">
+              </div>
+              <mat-card-content class="cardContent" [ngClass]="{'checkboxOverflowClass': checked, 'cardContentHeight': !checked}">
+                <p [innerHTML]="perfume.description" class="scrolling-container"></p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="paginator">
+            <mat-paginator [length]="perfumes.length" (page)="onPageChange($event)"
+              [pageSize]="4" [pageSizeOptions]="[2, 4, 8]">
+            </mat-paginator>
+          </div>
+        </mat-tab>
+        <mat-tab label="Table">
+          <app-sort-table></app-sort-table>
+        </mat-tab>
+        <mat-tab label="CDK Scroll">
+          <app-cdk-scroll></app-cdk-scroll>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </div>
 </div>
 

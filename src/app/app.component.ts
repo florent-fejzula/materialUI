@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
+import { DialogExampleComponent } from './components/dialog-example/dialog-example.component';
 import { PerfumesService } from './services/perfumes.service';
+
+export interface Perfume {
+  brand: string,
+  name: string,
+  imgSrc: string[],
+  description: string
+}
 
 @Component({
   selector: 'app-root',
@@ -7,15 +17,18 @@ import { PerfumesService } from './services/perfumes.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'materialUI';
-  notification = 2  ;
+  notification = 2;
+  checked!: boolean;
   loaded = true;
-  checked = false;
   perfumes: any;
-  theDate: any;
+  pageSlice: any;
 
-  constructor(private perfumeService: PerfumesService) {
+  constructor(
+    private perfumeService: PerfumesService,
+    private dialog: MatDialog
+  ) {
     this.perfumes = this.perfumeService.perfumes;
+    this.pageSlice = this.perfumes.slice(0, 4);
   }
 
   ngOnInit() {
@@ -24,12 +37,23 @@ export class AppComponent implements OnInit {
     }, 1000);
   }
 
-  dateChanged($event: { target: { value: any; }; }) {
-    let value = $event.target.value.toString().split(' ');
-    this.theDate = `${value[2]} ${value[1]} ${value[3]}`;
+  openDialog(perfume: Perfume): void {
+    this.dialog.open(DialogExampleComponent, {
+      width: '500px',
+      data: perfume
+    });
   }
 
-  openDialog() {
-    alert('detail');
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if(endIndex > this.perfumes.length) {
+      endIndex = this.perfumes.length;
+    }
+    this.pageSlice = this.perfumes.slice(startIndex, endIndex);
+  }
+
+  getSlider(slider: any) {
+    this.checked = slider;
   }
 }

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>{{perfume.name}}</h1>
+<div mat-dialog-content>
+  <div class="displayImages">
+    <div *ngFor="let img of perfume.imgSrc" class="image">
+      <img mat-card-image [src]="img" alt="image">
+    </div>
+  </div>
+  <p [innerHTML]="perfume.description"></p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</div>

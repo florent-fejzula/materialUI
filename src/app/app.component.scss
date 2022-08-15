@@ -9,28 +9,10 @@
     border: 1px solid darkblue;
 }
 
-.sidenav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .sidenavItem {
-        margin: 10px 0px;
-        width: 100%;
-
-        .checkbox {
-            margin: 0 10px;
-            zoom: 1.2;
-            font-weight: bold;
-        }
-    }
-}
-
 .cards {
     display: flex;
     
     .exampleCard {
-        cursor: pointer;
         max-width: 240px;
         margin: 16px;
         display: flex;
@@ -40,9 +22,11 @@
         .cardHeader {
             justify-content: center;
             height: 64px;
+            text-align: center;
         }
         
         .imgDiv {
+            cursor: pointer;
             height: 140px;
             
             .mat-card-image {
@@ -87,4 +71,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+::ng-deep .mat-tab-labels {
+    justify-content: center !important;
+}
+
+::ng-deep .mat-paginator-container {
+    justify-content: center !important;
 }

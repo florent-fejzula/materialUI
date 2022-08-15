@@ -10,6 +10,16 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatListModule} from '@angular/material/list';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -23,7 +33,17 @@ const MaterialComponents = [
   MatDatepickerModule,
   MatFormFieldModule,
   MatNativeDateModule,
-  MatInputModule
+  MatInputModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatPaginatorModule,
+  MatSlideToggleModule,
+  MatSliderModule,
+  MatTabsModule,
+  MatTableModule,
+  MatSortModule,
+  ScrollingModule,
+  MatListModule
 ];
 
 @NgModule({

@@ -1,0 +1,55 @@
+<div class="sidenav">
+  <div class="sidenavItem">
+    <mat-slide-toggle color="primary" [(ngModel)]="sliderChecked">Disable options</mat-slide-toggle>
+  </div>
+
+  <div class="sidenavItem">
+    <mat-checkbox class="checkbox" [(ngModel)]="checked" [disabled]="sliderChecked" (ngModelChange)="sliderChange()">
+      Smaller card height
+    </mat-checkbox>
+  </div>
+
+  <div class="sidenavItem">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" (dateChange)="dateChanged($event)" [disabled]="sliderChecked">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="sidenavItem">
+    <h2 [ngClass]="{'grayedText': sliderChecked}">Today's date: {{ theDate }}</h2>
+  </div>
+
+  <div class="sidenavItem">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle [disabled]="sliderChecked">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Expansion Panel 1
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Primary panel content</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false"
+                           [disabled]="sliderChecked">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Expansion Panel 2
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Secondary panel content</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="sidenavItem">
+    <h3 [ngClass]="{'grayedText': sliderChecked}">Please select your phone number:</h3>
+    {{sliderValue}}
+    <mat-slider min="0" max="999999999" step="1"
+    [disabled]="sliderChecked" (input)="onSliderChange($event)"></mat-slider>
+  </div>
+</div>
