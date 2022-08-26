@@ -1,0 +1,74 @@
+
+.container {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+}
+
+.child {
+    border: 1px solid darkblue;
+}
+
+.cards {
+    display: flex;
+    
+    .exampleCard {
+        max-width: 240px;
+        margin: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .cardHeader {
+            justify-content: center;
+            height: 64px;
+            text-align: center;
+        }
+        
+        .imgDiv {
+            cursor: pointer;
+            height: 140px;
+            
+            .mat-card-image {
+                margin: 0;
+                width: 100px;
+            }
+            
+            .mat-card-image:first-child {
+                margin-top: 0;
+            }
+        }
+
+        .cardContent {
+            padding: 10px;
+            text-align: justify;
+            text-align-last: center;
+            justify-content: center;
+            letter-spacing: 0.2px;
+            overflow: auto;
+            box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+        
+            p {
+                margin: 0;
+            }
+        }
+
+        .checkboxOverflowClass {
+            height: 124px;
+            overflow: auto;
+        }
+
+        .cardContentHeight {
+            height: 164px;
+            overflow: hidden;
+        }
+    }
+}
+
+::ng-deep .mat-tab-labels {
+    justify-content: center !important;
+}
+
+::ng-deep .mat-paginator-container {
+    justify-content: center !important;
+}

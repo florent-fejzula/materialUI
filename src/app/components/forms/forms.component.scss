@@ -1,0 +1,73 @@
+@import "../../../assets/styles/styles.scss";
+
+.container {
+    @include standardContainer();
+}
+
+.form {
+    width: 460px;
+    margin: 10px auto;
+    border: 2px solid $darkBlue;
+    border-radius: 6px;
+    color: $orange;
+    font-size: 1.6rem;
+    padding: 0px 20px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        .personalDetails {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            margin: 8px 0px 12px;
+            padding: 6px;
+            font-size: 1.2rem;
+        }
+
+        select {
+            margin: 10px 0px;
+            font-size: 1.2rem;
+            padding: 6px;
+        }
+
+        .radio {
+            display: flex;
+            flex-direction: row;
+            margin: 10px 0px;
+
+            & :first-child {
+                margin-right: 20px;
+            }
+
+            input {
+                margin: 0px 8px;
+            }
+        }
+    }
+}
+
+input.ng-invalid.ng-touched {
+    border: 2px solid red;
+    border-radius: 2px;
+}
+
+.emailValidation {
+    color: red;
+    font-size: 1rem;
+}
+
+.myForm.INVALID {
+    border: 2px solid red !important;
+}
+
+.myForm.PENDING {
+    border: 2px solid $orange !important;
+}
+
+.myForm.VALID {
+    border: 2px solid green !important;
+}

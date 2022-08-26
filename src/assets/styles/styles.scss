@@ -1,0 +1,16 @@
+$orange: #F46036;
+$darkBlue: #011638;
+
+@mixin flex($value) {
+    display: flex;
+    flex-direction: $value;
+}
+
+@mixin standardContainer() {
+    border: 1px solid $darkBlue;
+    border-radius: 18px;
+    width: 80%;
+    margin: auto;
+    font-size: 1.4rem;
+    min-height: 600px;
+}

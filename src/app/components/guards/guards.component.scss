@@ -1,0 +1,30 @@
+@import "../../../assets/styles/styles.scss";
+
+.container {
+    border: 1px solid $darkBlue;
+    border-radius: 18px;
+    font-size: 2rem;
+    @include flex(column);
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    color: $orange;
+    padding-bottom: 40px;
+
+    h2 {
+        font-size: 3rem;
+        margin: 40px 0px;
+    }
+
+    form {
+        @include flex(column);
+        
+        > input {
+            margin: 14px 0px 30px;
+            padding: 10px;
+            font-size: 1.4rem;
+        }
+    }
+
+}

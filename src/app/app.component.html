@@ -1,44 +1,20 @@
-<app-navbar></app-navbar>
+<mat-toolbar class="navbar">
+  <a matRipple class="home" routerLink="home" routerLinkActive="linkActive">
+    <mat-icon color="primary" matRipple>home</mat-icon><span>Material</span>
+  </a>
+<div class="links">
+  <a routerLink="features" routerLinkActive="linkActive">Features</a>
+  <a routerLink="guards" routerLinkActive="linkActive">Guards</a>
+  <a routerLink="forms" routerLinkActive="linkActive">Forms</a>
+  <a routerLink="rxjs" routerLinkActive="linkActive">RxJS</a>
+</div>
+</mat-toolbar>
 
 <div class="container" *ngIf="loaded; else spinner">
-  
-  <div class="child">
-    <app-sidenav (sliderEvent)="getSlider($event)"></app-sidenav>
-  </div>
 
-  <div class="child">
-    <div class="tabs">
-      <mat-tab-group animationDuration="0ms">
-        <mat-tab label="Perfumes">
-          <div class="cards">
-            <mat-card class="exampleCard" *ngFor="let perfume of pageSlice">
-              <mat-card-header class="cardHeader">
-                <mat-card-subtitle>{{perfume.brand}}</mat-card-subtitle>
-                <mat-card-title>{{perfume.name}}</mat-card-title>
-              </mat-card-header>
-              <div class="imgDiv" (click)="openDialog(perfume)">
-                <img mat-card-image [src]="perfume.imgSrc[0]" alt="Phtaloblue">
-              </div>
-              <mat-card-content class="cardContent" [ngClass]="{'checkboxOverflowClass': checked, 'cardContentHeight': !checked}">
-                <p [innerHTML]="perfume.description" class="scrolling-container"></p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="paginator">
-            <mat-paginator [length]="perfumes.length" (page)="onPageChange($event)"
-              [pageSize]="4" [pageSizeOptions]="[2, 4, 8]">
-            </mat-paginator>
-          </div>
-        </mat-tab>
-        <mat-tab label="Table">
-          <app-sort-table></app-sort-table>
-        </mat-tab>
-        <mat-tab label="CDK Scroll">
-          <app-cdk-scroll></app-cdk-scroll>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
+  <div class="loader" *ngIf="displayLoadingIndicator">Loading...</div>
+
 </div>
 
 <ng-template #spinner>

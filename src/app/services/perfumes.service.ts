@@ -36,4 +36,13 @@ export class PerfumesService {
   ];
 
   constructor() { }
+
+  getAllPerfumes(): any {
+    const perfumeList = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.perfumes)
+      }, 2000);
+    });
+    return perfumeList;
+  }
 }

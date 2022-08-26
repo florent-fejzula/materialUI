@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Contact Us</h2>
+    <form>
+        <label>First Name</label>
+        <input type="text" name="firstName" [(ngModel)]="firstName">
+        <label>Last Name</label>
+        <input type="text" name="lastName" [(ngModel)]="lastName">
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="email">
+    </form>
+    
+    <ul *ngFor="let perfume of perfumes">
+        <li>{{ perfume.name }}</li>
+    </ul>
+</div>
