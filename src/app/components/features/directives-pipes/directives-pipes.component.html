@@ -47,3 +47,28 @@
         <button (click)="addDummyStudent()">Add Student</button>
     </div>
 </div>
+
+<div appBasicBorder>
+    <ng-container *ngIf="roleDefined">
+        <div *ngIf="adminRole; else notAdmin">
+            User is Admin
+        </div>
+        <ng-template #notAdmin>
+            User is not Admin
+        </ng-template>
+    </ng-container>
+    <ng-template>
+        This will not render
+    </ng-template>
+</div>
+
+<div appBasicBorder>
+    <div *ngFor="let number of numbers">
+        <ng-container *ngIf="number % 2 === 0">{{ number }}</ng-container>
+    </div>
+</div>
+
+<div>
+    {{ counter }}
+    <button (click)="increase()">Increase</button>
+</div>

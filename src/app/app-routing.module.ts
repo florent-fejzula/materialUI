@@ -5,6 +5,7 @@ import { CustomLibraryComponent } from './components/features/custom-library/cus
 import { DirectivesPipesComponent } from './components/features/directives-pipes/directives-pipes.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { LifecycleHooksComponent } from './components/features/lifecycle-hooks/lifecycle-hooks.component';
+import { RouteParamsDetailComponent } from './components/features/route-params/route-params-detail/route-params-detail.component';
 import { RouteParamsComponent } from './components/features/route-params/route-params.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +19,9 @@ const routes: Routes = [
   { path: 'features', component: FeaturesComponent, children: [
     { path: 'directives-pipes', component: DirectivesPipesComponent },
     { path: 'communication', component: CommunicationComponent },
-    { path: 'route-params', component: RouteParamsComponent },
+    { path: 'route-params', component: RouteParamsComponent, children: [
+      { path: ':id', component: RouteParamsDetailComponent }
+    ] },
     { path: 'custom-library', component: CustomLibraryComponent },
     { path: 'lifecycle-hooks', component: LifecycleHooksComponent },
   ] },

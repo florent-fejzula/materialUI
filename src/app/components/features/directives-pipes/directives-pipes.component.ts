@@ -15,6 +15,10 @@ export class DirectivesPipesComponent implements OnInit {theBool = true;
   students!: Student[];
   totalMarks!: number;
   filterText = '';
+  roleDefined = true;
+  adminRole = false;
+  numbers = [1,2,3,4,5,6,7,8];
+  counter = 2;
 
   constructor(
     private studentService: StudentService
@@ -32,6 +36,12 @@ export class DirectivesPipesComponent implements OnInit {theBool = true;
 
   addDummyStudent() {
     this.students.push({name: 'Dodi', course: 'TEST', marks: 520, DOB: new Date(), gender: 'Female'});
+  }
+
+  increase() {
+    setInterval(() => {
+      this.counter++;
+    }, 1000);
   }
 
 }

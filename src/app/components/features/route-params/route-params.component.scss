@@ -1,0 +1,42 @@
+
+.row {
+    display: flex;
+    border: 1px solid royalblue;
+}
+
+.row:first-child > * {
+    border: 1px solid black;
+    height: fit-content;
+    padding: 20px;
+    margin: 10px;
+}
+
+.row:nth-child(2) {
+    align-items: center;
+}
+
+ul  {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    li {
+        border: 1px solid teal;
+        padding: 6px;
+        cursor: pointer;
+    }
+    li:hover {
+        background-color: aquamarine;
+    }
+}
+
+.perfumesView {
+    width: 360px;
+    height: 95px;
+    border: 1px solid slategrey;
+    text-align: center;
+}
+
+.selected {
+    background-color: aquamarine;
+    color: firebrick;
+}

@@ -1,1 +1,21 @@
-<p>route-params works!</p>
+<div class="row">
+    <ul>
+        <li *ngFor="let perfume of perfumes" (click)="onSelect(perfume)"
+        [class.selected]="isSelected(perfume)">
+        {{ perfume.name }}</li>
+    </ul>
+    <div class="perfumesView">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<div appBasicBorder>
+    <div class="root">
+        <h2>Root</h2>
+        <button (click)="onClick()">Click</button>
+        <div class="parents">
+            <app-parent-one></app-parent-one>
+            <app-parent-two></app-parent-two>
+        </div>
+    </div>
+</div>

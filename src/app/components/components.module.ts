@@ -28,6 +28,13 @@ import { ChildComponent } from './features/communication/child/child.component';
 import { DumbComponent } from './features/communication/dumb/dumb.component';
 import { SmartComponent } from './features/communication/smart/smart.component';
 import { Child2Component } from './features/communication/child2/child2.component';
+import { RouteParamsDetailComponent } from './features/route-params/route-params-detail/route-params-detail.component';
+import { ParentOneComponent } from './features/route-params/parent-one/parent-one.component';
+import { ParentOneChildOneComponent } from './features/route-params/parent-one-child-one/parent-one-child-one.component';
+import { ParentTwoComponent } from './features/route-params/parent-two/parent-two.component';
+import { ParentTwoChildOneComponent } from './features/route-params/parent-two-child-one/parent-two-child-one.component';
+import { ParentTwoChildTwoComponent } from './features/route-params/parent-two-child-two/parent-two-child-two.component';
+import { ParentOneChildTwoComponent } from './features/route-params/parent-one-child-two/parent-one-child-two.component';
 
 const components = [
   DialogExampleComponent,
@@ -50,7 +57,14 @@ const components = [
   ChildComponent,
   DumbComponent,
   SmartComponent,
-  Child2Component
+  Child2Component,
+  RouteParamsDetailComponent,
+  ParentOneComponent,
+  ParentOneChildOneComponent,
+  ParentOneChildTwoComponent,
+  ParentTwoComponent,
+  ParentTwoChildOneComponent,
+  ParentTwoChildTwoComponent
 ];
 
 @NgModule({
