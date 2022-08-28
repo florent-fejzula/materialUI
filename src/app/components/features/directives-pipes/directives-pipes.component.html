@@ -1,0 +1,49 @@
+<div appBasicBorder>
+    <!-- NgClass attribute directive -->
+    <h2 [ngClass]="{'toggleBkg': theBool}">NgClass attribute directive</h2>
+    <button (click)="toggle()">Toggle</button>
+    
+    <!-- NgStyle attribute directive -->
+    <h2 [ngStyle]="{'background-color': bkgColor}">NgStyle attribute directive</h2>
+    <button (click)="bkgColor='dodgerblue'">Dodgerblue</button>
+    <button (click)="bkgColor='cornsilk'">Cornsilk</button>
+</div>
+
+<p appFancyText>Custom Text Styling Directive</p>
+
+<div appBasicBorder>
+    <h2>Pipes</h2>
+    <h3>{{ randomText | uppercase }}</h3>
+    <div>1 digit, min 2 max 3 decimals <span>{{5.678 | number: '1.2-3'}}</span></div>
+    <div>3 digits, min 4 max 5 decimals <span>{{5.678 | number: '3.4-5'}}</span></div>
+    <div>3 digits, min 1 max 2 decimals <span>{{5.678 | number: '3.1-2'}}</span></div>
+    <h2>{{ date | date: 'shortDate' }}</h2>
+    <h2>{{ date | date: 'shortTime' }}</h2>
+</div>
+
+<div appBasicBorder class="filterPipe">
+    <h2>filterStudent pipe</h2>
+    <div class="theTable">
+        <input type="text" placeholder="Search by gender" [(ngModel)]="filterText">
+        <table id="student">
+            <tr>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Marks</th>
+                <th>Percentage</th>
+                <th>DOB</th>
+                <th>Gender</th>
+            </tr>
+            <tr *ngFor="let std of students | filterStudent: filterText">
+                <td>{{ std.name }}</td>
+                <td>{{ std.course }}</td>
+                <td><input type="number" value="std.marks" [(ngModel)]="std.marks"></td>
+                <td>{{ std.marks | percentage: totalMarks: 3 }}</td>
+                <td>{{ std.DOB | date: 'fullDate' }}</td>
+                <td>{{ std.gender | uppercase }}</td>
+            </tr>
+        </table>
+        <br>
+        <button (click)="addDummyStudent()">Add Student</button>
+    </div>
+</div>

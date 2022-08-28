@@ -1,0 +1,28 @@
+<div appBasicBorder>
+    <h2>Services</h2>
+    <p>App component recieving var from service: {{ varFromService }}</p>
+    <p>List from Service:</p>
+    <ul *ngFor="let item of listFromService">
+        <li>{{ item.id }} {{ item.name }}</li>
+    </ul>
+</div>
+
+<div appBasicBorder>
+    <h2>ViewChild</h2>
+    <app-child (greetEvent)="greet($event)"></app-child>
+</div>
+
+<div appBasicBorder>
+    <div class="smart" appBasicBorder>
+        <h3 appFancyText>Smart Component with Dumb Child</h3>
+        <app-smart></app-smart>
+    </div>
+    <h3 appFancyText>Dumb child directly in App Component</h3>
+    <app-dumb [list]="testArray"></app-dumb>
+</div>
+
+<div appBasicBorder>
+    <app-child2>
+        <p #paragraph>Access this paragraph here in parent, from the child component</p>
+    </app-child2>
+</div>

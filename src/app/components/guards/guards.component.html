@@ -9,7 +9,7 @@
         <input type="email" name="email" [(ngModel)]="email">
     </form>
     
-    <ul *ngFor="let perfume of perfumes">
-        <li>{{ perfume.name }}</li>
+    <ul>
+        <li *ngFor="let perfume of perfumes">{{ perfume.name }}</li>
     </ul>
 </div>

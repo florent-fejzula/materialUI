@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../modules/material/material.module';
-import { DialogExampleComponent } from './dialog-example/dialog-example.component';
-import { SortTableComponent } from './sort-table/sort-table.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
+import { DialogExampleComponent } from './home/dialog-example/dialog-example.component';
+import { SortTableComponent } from './home/sort-table/sort-table.component';
+import { SidenavComponent } from './home/sidenav/sidenav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CdkScrollComponent } from './cdk-scroll/cdk-scroll.component';
+import { CdkScrollComponent } from './home/cdk-scroll/cdk-scroll.component';
 import { FeaturesComponent } from './features/features.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -14,6 +14,20 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GuardsModule } from './guards/guards/guards.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DirectivesModule } from '../directives/directives.module';
+import { DirectivesPipesComponent } from './features/directives-pipes/directives-pipes.component';
+import { CommunicationComponent } from './features/communication/communication.component';
+import { RouteParamsComponent } from './features/route-params/route-params.component';
+import { CustomLibraryComponent } from './features/custom-library/custom-library.component';
+import { DodiLibModule } from 'dodiLib';
+import { FilterStudentPipe } from '../pipes/custom-student.pipe';
+import { PercentagePipe } from '../pipes/percentage.pipe';
+import { LifecycleHooksComponent } from './features/lifecycle-hooks/lifecycle-hooks.component';
+import { ChildComponent as LifecycleChild } from './features/lifecycle-hooks/child/child.component';
+import { ChildComponent } from './features/communication/child/child.component';
+import { DumbComponent } from './features/communication/dumb/dumb.component';
+import { SmartComponent } from './features/communication/smart/smart.component';
+import { Child2Component } from './features/communication/child2/child2.component';
 
 const components = [
   DialogExampleComponent,
@@ -24,7 +38,19 @@ const components = [
   HomeComponent,
   FormsComponent,
   RxjsComponent,
-  PageNotFoundComponent
+  PageNotFoundComponent,
+  FilterStudentPipe,
+  PercentagePipe,
+  DirectivesPipesComponent,
+  CommunicationComponent,
+  RouteParamsComponent,
+  CustomLibraryComponent,
+  LifecycleHooksComponent,
+  LifecycleChild,
+  ChildComponent,
+  DumbComponent,
+  SmartComponent,
+  Child2Component
 ];
 
 @NgModule({
@@ -36,7 +62,9 @@ const components = [
     ReactiveFormsModule,
     RouterModule,
     GuardsModule,
-    HttpClientModule
+    HttpClientModule,
+    DirectivesModule,
+    DodiLibModule
   ],
   exports: [components]
 })

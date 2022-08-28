@@ -107,6 +107,37 @@
           }
         }
       }
+    },
+    "dodiLib": {
+      "projectType": "library",
+      "root": "projects/dodi-lib",
+      "sourceRoot": "projects/dodi-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dodi-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dodi-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dodi-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dodi-lib/src/test.ts",
+            "tsConfig": "projects/dodi-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/dodi-lib/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "materialUI"

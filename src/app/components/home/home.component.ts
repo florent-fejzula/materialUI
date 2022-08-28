@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { PerfumesService } from 'src/app/services/perfumes.service';
-import { DialogExampleComponent } from '../dialog-example/dialog-example.component';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 
 export interface Perfume {
   brand: string,

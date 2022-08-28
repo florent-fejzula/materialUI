@@ -1,1 +1,38 @@
 @import "../../../assets/styles/styles.scss";
+
+.container {
+    display: grid;
+    grid-template-columns: 18% 1fr;
+
+    .sidenav {
+        border: 1px solid red;
+        min-height: 500px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li {
+                border: 1px solid black;
+                font-size: 1.4rem;
+                padding: 14px 10px;
+                cursor: pointer;
+            }
+
+            li:hover {
+                background-color: rgb(79, 179, 255);
+            }
+
+            .linkActive {
+                background-color: rgb(79, 179, 255);
+            }
+        }
+    }
+
+    .main {
+        border: 1px solid black;
+        min-height: 500px;
+        padding: 40px;
+    }
+}

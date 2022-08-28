@@ -8,6 +8,7 @@ import { MaterialModule } from './modules/material/material.module';
 import { ComponentsModule } from './components/components.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { StudentService } from './services/students/students.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +21,11 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     ComponentsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ],
-  providers: [],
+  providers: [
+    StudentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

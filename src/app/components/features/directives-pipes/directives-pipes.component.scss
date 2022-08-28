@@ -1,0 +1,13 @@
+.toggleBkg {
+    color: blueviolet;
+}
+
+.filterPipe {
+    grid-column: 1 / 3;
+    grid-row: 1;
+
+    td, th {
+        border: 1px solid lightgray;
+        padding: 6px;
+    }
+}
