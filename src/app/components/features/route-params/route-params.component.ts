@@ -21,6 +21,8 @@ export class RouteParamsComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit(): void {
+    // Better to subscribe to paramMap to get the id from url, will update accordingly
+    // rather than with route snapshot, it gets only once and doesn't update
     this.route.paramMap.subscribe((param: ParamMap) => {
       let id = param.get('id');
       this.selectedId = Number(id);

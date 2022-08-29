@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
     private dialog: MatDialog
   ) {
     this.perfumes = this.perfumeService.perfumes;
+    console.log(this.perfumes[0].imgSrc[0]);
     this.pageSlice = this.perfumes.slice(0, 4);
   }
 

@@ -1,0 +1,7 @@
+<div appBasicBorder>
+    <h2>trackBy with ngFor (don't refresh items unless there is change)</h2>
+    <ul>
+        <li *ngFor="let user of users; trackBy: trackByUser">{{user.id}} {{user.name}}</li>
+    </ul>
+    <button (click)="refresh()">Refresh</button>
+</div>

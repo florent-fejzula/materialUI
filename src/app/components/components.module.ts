@@ -35,6 +35,7 @@ import { ParentTwoComponent } from './features/route-params/parent-two/parent-tw
 import { ParentTwoChildOneComponent } from './features/route-params/parent-two-child-one/parent-two-child-one.component';
 import { ParentTwoChildTwoComponent } from './features/route-params/parent-two-child-two/parent-two-child-two.component';
 import { ParentOneChildTwoComponent } from './features/route-params/parent-one-child-two/parent-one-child-two.component';
+import { TestComponent } from './features/test/test.component';
 
 const components = [
   DialogExampleComponent,
@@ -68,7 +69,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, TestComponent],
   imports: [
     CommonModule,
     MaterialModule,
