@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { debounceTime, mergeMap, Observable, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from 'src/app/services/http/http.service';
+import { TestService } from 'src/app/services/testService/test.service';
+import { FormControl } from '@angular/forms';
 
 export interface Fruit {
   color: string,
@@ -57,9 +59,22 @@ export class RxjsComponent implements OnInit {
     observer.next('5');
   });
 
+  // ForkJoin example
+  schoolsCount = 0;
+  hospitalsCount = 0;
+  banksCount = 0;
+  schoolsLoading = false;
+  hospitalsLoading = false;
+  banksLoading = false;
+
+  // mergeMap vs SwitchMap operators
+  searchControl = new FormControl();
+  fruits: string[] = [];
+
   constructor(
     private http: HttpClient,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private testService: TestService,
   ) {
     this.employees = this.httpService.getEmployees().subscribe((data) => {
       this.employeeList = data;
@@ -86,6 +101,62 @@ export class RxjsComponent implements OnInit {
     });
 
     console.log('Employees: ', this.employees);
+
+    // forkJoin example
+    this.schoolsLoading = true;
+    this.hospitalsLoading = true;
+    this.banksLoading = true;
+    this.getData();
+
+    // mergeMap vs SwitchMap
+    this.searchControl.valueChanges.pipe(
+      debounceTime(700),
+      switchMap((searchText: string) => this.filter(searchText))
+    ).subscribe((fruits: any) => {
+      this.fruits = fruits
+    })
+  }
+
+  getData() {
+    // This is normal way without forkJoin, data loaded as they come
+    // this.testService.getWidgetOneData().subscribe((data) => {
+    //   this.schoolsCount = data;
+    //   this.schoolsLoading = false;
+    // });
+    // this.testService.getWidgetTwoData().subscribe((data) => {
+    //   this.hospitalsCount = data;
+    //   this.hospitalsLoading = false;
+    // });
+    // this.testService.getWidgetThreeData().subscribe((data) => {
+    //   this.banksCount = data;
+    //   this.banksLoading = false;
+    // });
+
+    // get data with forkJoin, all loaded at the same time
+    this.testService.getAllData().subscribe(res => {
+      this.schoolsCount = res[0];
+      this.hospitalsCount = res[1];
+      this.banksCount = res[2];
+      this.schoolsLoading = false;
+      this.hospitalsLoading = false;
+      this.banksLoading = false;
+    });
+  }
+
+  // mergeMap vs SwitchMap
+  filter(searchText: string) {
+    let obsOne = new Observable<string[]>((observer) => {
+      setTimeout(() => {
+        observer.next(['apple', 'pineapple']);
+      }, 2000);
+    });
+    let obsTwo = new Observable<string[]>((observer) => {
+      setTimeout(() => {
+        observer.next(['mango', 'orange']);
+      }, 2000);
+    });
+
+    return searchText === 'app' ? obsOne : obsTwo;
   }
 
 }

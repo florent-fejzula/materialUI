@@ -1,0 +1,22 @@
+.users {
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    overflow: auto;
+
+    .user {
+        text-align: center;
+        border: 2px solid purple;
+        margin: 10px;
+    
+        .userImage {
+            
+            .theImage {
+                width: 160px;
+                height: 160px;
+                object-fit: cover;
+            }
+        }    
+    }
+}
+

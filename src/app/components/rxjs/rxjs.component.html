@@ -1,6 +1,28 @@
-<p>
-    Observables example log
-</p>
-<p>
-    ObservablePhase value: {{ obsValue }}
-</p>
+<div appBasicBorder>
+    <p>Observables example log</p>
+    <p>ObservablePhase value: {{ obsValue }}</p>
+</div>
+
+<div appBasicBorder>
+    <h2>forkJoin (load data when all observables are ready)</h2>
+    <div class="widgets">
+        <div class="widget">
+            <h3>Schools: {{ schoolsCount }}</h3>
+            <div *ngIf="schoolsLoading">Loading...</div>
+        </div>
+        <div class="widget">
+            <h3>Hospitals: {{ hospitalsCount }}</h3>
+            <div *ngIf="hospitalsLoading">Loading...</div>
+        </div>
+        <div class="widget">
+            <h3>Banks: {{ banksCount }}</h3>
+            <div *ngIf="banksLoading">Loading...</div>
+        </div>
+    </div>
+</div>
+
+<div appBasicBorder>
+    <h2>MergeMap vs SwitchMap operators</h2>
+    <input [formControl]="searchControl" placeholder="Search...">
+    <div *ngFor="let fruit of fruits">{{ fruit }}</div>
+</div>

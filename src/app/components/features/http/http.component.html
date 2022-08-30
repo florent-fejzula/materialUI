@@ -1,0 +1,19 @@
+<div appBasicBorder>
+    <h2>Basic show users from github API</h2>
+    <div class="users">
+        <div class="user" *ngFor="let user of users">
+            <div class="userImage">
+                <img class="theImage" [src]="user.avatar_url" alt="">
+            </div>
+            <div class="username">{{ user.login }}</div>
+            <div class="userBtn">
+                <button (click)="goToGithub(user.html_url)">Open Github</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div appBasicBorder>
+    <h2>Http Interceptor test (disabled currently in app.module providers)</h2>
+    <button (click)="getProduct()">Get Product</button>
+</div>

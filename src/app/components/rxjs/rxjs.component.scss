@@ -1,1 +1,12 @@
 @import "../../../assets/styles/styles.scss";
+
+.widgets {
+    display: flex;
+
+    .widget {
+        border: 1px solid darkgoldenrod;
+        min-width: 200px;
+        padding: 10px;
+        min-height: 65px;
+    }
+}
