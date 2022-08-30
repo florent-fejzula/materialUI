@@ -71,6 +71,13 @@ export class RxjsComponent implements OnInit {
   searchControl = new FormControl();
   fruits: string[] = [];
 
+  // async pipe
+  countries: string[] = [];
+  status = false;
+  section = 'country';
+  countriesObs$: any;
+  statusPromise$: any;
+
   constructor(
     private http: HttpClient,
     private httpService: HttpService,
@@ -157,6 +164,24 @@ export class RxjsComponent implements OnInit {
     });
 
     return searchText === 'app' ? obsOne : obsTwo;
+  }
+
+  // async pipe instead of normal subscription
+  getCountries() {
+    this.section = 'country';
+    // this.testService.getCountries().subscribe((res: string[]) => {
+    //   this.countries = res;
+    // });
+    this.countriesObs$ = this.testService.getCountries();
+  }
+
+  getStatus() {
+    this.section = 'status';
+    this.status = false;
+    // this.testService.getStatus().then((res: boolean) => {
+    //   this.status = res;
+    // });
+    this.statusPromise$ = this.testService.getStatus();
   }
 
 }

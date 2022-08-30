@@ -26,3 +26,23 @@
     <input [formControl]="searchControl" placeholder="Search...">
     <div *ngFor="let fruit of fruits">{{ fruit }}</div>
 </div>
+
+<div appBasicBorder>
+    <h2>Async pipe (instead of subscribe to Observable in .ts)</h2>
+    <div class="buttons">
+        <button (click)="getCountries()">Get Countries</button>
+        <button (click)="getStatus()">Get Status</button>
+    </div>
+    <div class="sections">
+        <div *ngIf="section === 'country'">
+            <!-- <div *ngFor="let country of countries">{{ country }}</div> -->
+            <div *ngFor="let country of countriesObs$ | async">{{ country }}</div>
+        </div>
+        <div *ngIf="section === 'status'">
+            <!-- <span *ngIf="status">Online</span> -->
+            <!-- <span *ngIf="!status">Offline</span> -->
+            <span *ngIf="statusPromise$ | async">Online</span>
+            <span *ngIf="!(statusPromise$ | async)">Offline</span>
+        </div>
+    </div>
+</div>

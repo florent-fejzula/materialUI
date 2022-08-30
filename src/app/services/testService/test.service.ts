@@ -75,4 +75,26 @@ export class TestService {
     return forkJoin([observableOne, observableTwo, observableThree]);
   }
 
+  // functions to test async pipe
+  getCountries() {
+    return new Observable<string[]>((observer) => {
+      setTimeout(() => {
+        observer.next([
+          'India',
+          'USA',
+          'Iran',
+          'Vietnam'
+        ]);
+      }, 2000);
+    });
+  }
+
+  getStatus() {
+    return new Promise<boolean>((resolve, reject) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 2000);
+    });
+  }
+
 }

@@ -5,3 +5,10 @@
     </ul>
     <button (click)="refresh()">Refresh</button>
 </div>
+
+<div appBasicBorder>
+    <h2>DOM Sanitizer (bypass Html code, try injecting button element)</h2>
+    <input #searchText type="text" placeholder="Search...">
+    <button (click)="search(searchText)">Search</button>
+    <div>You searched for <span [innerHtml]="searchKey"></span></div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-test',
@@ -13,11 +14,14 @@ export class TestComponent implements OnInit {
     {id: 3, name: 'Hermione'},
   ];
 
-  constructor() { }
+  // DOM Sanitizer
+  searchKey: any;
 
-  ngOnInit(): void {
-    
-  }
+  constructor(
+    private domSanitizer: DomSanitizer
+  ) { }
+
+  ngOnInit(): void {}
 
   // trackBy ngFor
   refresh() {
@@ -28,10 +32,15 @@ export class TestComponent implements OnInit {
     ];
   }
 
-  // trackBy ngFor
   trackByUser(index: number, item: any) {
     // return index;
     return item.id;
+  }
+
+  // DOM Sanitizer
+  search(searchText: any) {
+    // this.searchKey = searchText.value;
+    this.searchKey = this.domSanitizer.bypassSecurityTrustHtml(searchText.value);
   }
 
 }
