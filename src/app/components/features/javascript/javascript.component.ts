@@ -32,6 +32,28 @@ export class JavascriptComponent implements OnInit {
   restArgs!: number;
   numbers = [1,2,3,4,5];
   templateLiteral = `This "string" has two types of 'quotation marks'`;
+  res: number[] = [];
+  people = [
+    {
+      firstName: 'Harry',
+      lastName: 'Potter',
+      age: 23
+    },
+    {
+      firstName: 'Ron',
+      lastName: 'Weasley',
+      age: 27
+    },
+    {
+      firstName: 'Hermione',
+      lastName: 'Granger',
+      age: 25
+    }
+  ];
+  evenNums: number[] = [];
+  olderPeople: any;
+  totalSum = 0;
+  minNumber = -500;
 
   constructor() { }
 
@@ -61,6 +83,37 @@ export class JavascriptComponent implements OnInit {
     console.log(a, b, c);
     let {name, department} = this.obj3;
     console.log('object destructuring, take firstName and department from object: ', name, department);
+
+    // map function
+    this.res = this.numbers.map(item => Math.pow(item, 2));
+    console.log('squares of numbers: ', this.res);
+    this.people.map((person) => {
+      console.log(person.firstName + ' ' + person.lastName);
+    });
+
+    // filter function
+    this.evenNums = this.numbers.filter(num => num % 2 == 0);
+    console.log('Even numbers with filter: ', this.evenNums);
+    this.olderPeople = this.people.filter((person) => {
+      return person.age > 23;
+    });
+    console.log('filter people age > 23: ', this.olderPeople);
+    
+    // reduce function
+    this.totalSum = this.numbers.reduce((total, item) => {
+      total += item;
+      return total;
+    });
+    console.log('total Sum using Reduce: ', this.totalSum);
+    
+    this.minNumber = this.numbers.reduce((min, val) => {
+      if(val < min) {
+        min = val;
+      }
+      return min;
+    });
+    console.log('min Number using Reduce: ', this.minNumber);
+
   }
 
   // arrow function
@@ -78,7 +131,5 @@ export class JavascriptComponent implements OnInit {
     }
     return total;
   }
-
-
 
 }
