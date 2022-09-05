@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="section">
+        <ul>
+            <li>Typeof('someText'): {{ typeofVar }}</li>
+            <li>'WebTechTalk'.includes('Tech'): {{ stringIncludes }}</li>
+            <li>animals.unshift('tiger'): {{ animals }}</li>
+            <li>animals.shift(): {{ animals2 }}</li>
+            <li>alphabet.splice(2,0,'C'): {{ alphabet }}</li>
+            <li>alphabet.splice(4,1,'E'): {{ alphabet2 }}</li>
+            <li>Object.keys(person): {{ personKeys }}</li>
+            <li>Object.values(person): {{ personValues }}</li>
+            <li>Object.entries(person): {{ personEntries }}</li>
+            <li>Object.freeze(obj) will prevent editing, adding or deleting from the object</li>
+            <li>Object.seal(obj) will allow editing but prevent adding or deleting</li>
+            <li>Random number from 1 to 100: {{ randomNumber }}</li>
+        </ul>
+    </div>
+    <div class="section">
+        <ul>
+            <li>Arrow function add = (a, b) => a + b. Result: {{ adds(4,5) }}</li>
+            <li>For in and for let iterations in Console</li>
+            <li>Spread operator c = [...a, ...b]: {{ spreadC }}</li>
+            <li>Spread operator combine 2 objects (show with json pipe): {{ obj3 | json }}</li>
+            <li>Rest operator for indefinite number of args in function: {{ restArgs }}</li>
+            <li>Array and object destructuring, assign array or object param values to vars</li>
+            <li>Template Literals: using backticks to define strings with quotation marks: {{ templateLiteral }}</li>
+        </ul>
+    </div>
+</div>

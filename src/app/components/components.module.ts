@@ -37,6 +37,7 @@ import { ParentTwoChildTwoComponent } from './features/route-params/parent-two-c
 import { ParentOneChildTwoComponent } from './features/route-params/parent-one-child-two/parent-one-child-two.component';
 import { TestComponent } from './features/test/test.component';
 import { HttpComponent } from './features/http/http.component';
+import { JavascriptComponent } from './features/javascript/javascript.component';
 
 const components = [
   DialogExampleComponent,
@@ -70,7 +71,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, TestComponent, HttpComponent],
+  declarations: [components, TestComponent, HttpComponent, JavascriptComponent],
   imports: [
     CommonModule,
     MaterialModule,
