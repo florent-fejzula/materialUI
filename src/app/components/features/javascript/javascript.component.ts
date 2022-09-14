@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./javascript.component.scss']
 })
 export class JavascriptComponent implements OnInit {
-  typeofVar = typeof('stringDodi');
+  typeofVar = typeof ('stringDodi');
   randomString = 'WebTechTalk';
   stringIncludes = this.randomString.includes('Tech');
   animals = ['cat', 'dog', 'cow'];
@@ -22,15 +22,15 @@ export class JavascriptComponent implements OnInit {
   personValues: any;
   personEntries: any;
   randomNumber = Math.floor(Math.random() * 100) + 1;
-  spreadA = [1,2,3];
-  spreadB = [4,5,6];
+  spreadA = [1, 2, 3];
+  spreadB = [4, 5, 6];
   spreadC = [...this.spreadA, ...this.spreadB];
   request = ['Please', 'do', 'subscribe'];
-  obj1 = {name: 'John', age: 23};
-  obj2 = {department: 'IT'};
+  obj1 = { name: 'John', age: 23 };
+  obj2 = { department: 'IT' };
   obj3: any;
   restArgs!: number;
-  numbers = [1,2,3,4,5];
+  numbers = [1, 2, 3, 4, 5];
   templateLiteral = `This "string" has two types of 'quotation marks'`;
   res: number[] = [];
   people = [
@@ -74,14 +74,14 @@ export class JavascriptComponent implements OnInit {
       console.log(keys);
     }
     console.log('spread array string items into one string: ', ...this.request);
-    this.obj3 = {...this.obj1, ...this.obj2};
-    this.restArgs = this.addRestParam(8,2,6);
+    this.obj3 = { ...this.obj1, ...this.obj2 };
+    this.restArgs = this.addRestParam(8, 2, 6);
     // array destructuring, assigning array values to vars
     // var [a, b, c] = this.numbers;
     // var [a, , b, c] = this.numbers;
     var [a, b, ...c] = this.numbers;
     console.log(a, b, c);
-    let {name, department} = this.obj3;
+    let { name, department } = this.obj3;
     console.log('object destructuring, take firstName and department from object: ', name, department);
 
     // map function
@@ -98,16 +98,16 @@ export class JavascriptComponent implements OnInit {
       return person.age > 23;
     });
     console.log('filter people age > 23: ', this.olderPeople);
-    
+
     // reduce function
     this.totalSum = this.numbers.reduce((total, item) => {
       total += item;
       return total;
     });
     console.log('total Sum using Reduce: ', this.totalSum);
-    
+
     this.minNumber = this.numbers.reduce((min, val) => {
-      if(val < min) {
+      if (val < min) {
         min = val;
       }
       return min;
