@@ -38,6 +38,7 @@ import { ParentOneChildTwoComponent } from './features/route-params/parent-one-c
 import { TestComponent } from './features/test/test.component';
 import { HttpComponent } from './features/http/http.component';
 import { JavascriptComponent } from './features/javascript/javascript.component';
+import { CallbacksComponent } from './features/callbacks/callbacks.component';
 
 const components = [
   DialogExampleComponent,
@@ -71,7 +72,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components, TestComponent, HttpComponent, JavascriptComponent],
+  declarations: [components, TestComponent, HttpComponent, JavascriptComponent, CallbacksComponent],
   imports: [
     CommonModule,
     MaterialModule,

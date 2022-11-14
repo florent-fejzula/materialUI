@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { debounceTime, mergeMap, Observable, of, switchMap } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { debounceTime, filter, map, mergeMap, Observable, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from 'src/app/services/http/http.service';
 import { TestService } from 'src/app/services/testService/test.service';
@@ -22,7 +22,7 @@ export interface IEmployee {
   templateUrl: './rxjs.component.html',
   styleUrls: ['./rxjs.component.scss']
 })
-export class RxjsComponent implements OnInit {
+export class RxjsComponent implements OnInit, OnDestroy {
   array1 = [1, 2, 7, 8];
   array2 = ['Y', 'R', 'T'];
 
@@ -78,6 +78,10 @@ export class RxjsComponent implements OnInit {
   countriesObs$: any;
   statusPromise$: any;
 
+  everySecond$ = this.createInterval$(1000);
+  // subscription = this.everySecond$.subscribe(this.createSubscriber('one'));
+  firstObsSubs: any;
+
   constructor(
     private http: HttpClient,
     private httpService: HttpService,
@@ -90,7 +94,8 @@ export class RxjsComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<Fruit>('./assets/exampleJson.json').subscribe((data: Fruit) => {
-      console.log(data.color);
+      // prints 'Red' in console
+      // console.log(data.color);
     });
 
     this.myObservable.subscribe((val: any) => {
@@ -122,6 +127,83 @@ export class RxjsComponent implements OnInit {
     ).subscribe((fruits: any) => {
       this.fruits = fruits
     })
+
+    // Promise
+    const promise = new Promise((resolve, reject) => {
+      console.log('IN PROMISE');
+      resolve('hey promise');
+    });
+
+    // promise.then(item => console.log(item));
+
+    // const simple$ = new Observable(observer => {
+    //   console.log('Generating observable');
+    //   setTimeout(() => {
+    //     observer.next('An Item!');
+    //     setTimeout(() => {
+    //       observer.next('Another Item!');
+    //     observer.complete();
+    //     }, 1000);
+    //   }, 1000);
+    // });
+
+    // simple$.subscribe(
+    //   item => console.log(`one.next ${item}`),
+    //   error => console.log(`one.error ${error}`),
+    //   () => console.log('one.complete')
+    // );
+
+    // example from Udemy part 1
+    // setTimeout(() => {
+    //   simple$.subscribe({
+    //     next: item => console.log(`two.next ${item}`),
+    //     error(error) {
+    //       console.log(`two.error ${error}`);
+    //     },
+    //     complete: function() {
+    //       console.log('two.complete');
+    //     }
+    //   });
+    // }, 3000);
+
+    // Udemy part 2
+    // setTimeout(() => {
+    //   this.subscription.unsubscribe();
+    // }, 3000);
+
+    // Udemy complete example
+    const customIntervalObs = new Observable(observer => {
+      let count = 0;
+      setInterval(() => {
+        observer.next(count);
+        if(count === 2) {
+          observer.complete();
+        }
+        if (count === 5) {
+          observer.complete();
+        }
+        if (count > 3) {
+          observer.error(new Error('Count is greater than 3!'));
+        }
+        count++;
+      }, 1000);
+    });
+
+    this.firstObsSubs = customIntervalObs.pipe(filter((data: any) => {
+      return data > 0;
+    }), map((data: any) => {
+      return 'Round: ' + (data  + 1);
+    })).subscribe(data => {
+      console.log('Udemy complete: ', data);
+    }, error => {
+      console.log(error);
+      alert(error.message);
+    }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.firstObsSubs.unsubscribe();
   }
 
   getData() {
@@ -182,6 +264,29 @@ export class RxjsComponent implements OnInit {
     //   this.status = res;
     // });
     this.statusPromise$ = this.testService.getStatus();
+  }
+
+  // Udemy on Observables part 2
+  createSubscriber(tag: any) {
+    return {
+      next(item: any) { console.log(`${tag}.next ${item}`); },
+      error(error: any) { console.log(`${tag}.error ${error.stack || error}`); },
+      complete() { console.log(`${tag}.complete`); },
+    }
+  }
+
+  createInterval$(time: number) {
+    return new Observable(observer => {
+      let index = 0;
+      let interval = setInterval(() => {
+        console.log(`Generating ${index}`);
+        observer.next(index++);
+      }, time);
+
+      return () => {
+        clearInterval(interval);
+      };
+    });
   }
 
 }

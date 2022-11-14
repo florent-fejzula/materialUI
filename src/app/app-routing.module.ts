@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CallbacksComponent } from './components/features/callbacks/callbacks.component';
 import { CommunicationComponent } from './components/features/communication/communication.component';
 import { CustomLibraryComponent } from './components/features/custom-library/custom-library.component';
 import { DirectivesPipesComponent } from './components/features/directives-pipes/directives-pipes.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
     { path: 'http', component: HttpComponent },
     { path: 'test', component: TestComponent },
     { path: 'javascript', component: JavascriptComponent },
+    { path: 'callbacks', component: CallbacksComponent },
   ] },
   { path: 'guards', loadChildren: () => import('./components/guards/guards/guards.module').then(m => m.GuardsModule), resolve: {perfumes: PerfumeResolveService} },
   { path: 'forms', component: FormsComponent },
