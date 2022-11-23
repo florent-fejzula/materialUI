@@ -17,3 +17,9 @@
     <h2>Http Interceptor test (disabled currently in app.module providers)</h2>
     <button (click)="getProduct()">Get Product</button>
 </div>
+
+<div appBasicBorder>
+    <h2>Send POST request to API</h2>
+    <button (click)="onCreatePost({title: 'dd', content: 'sds'})">POST</button>
+    <button (click)="getPosts()">Fetch</button>
+</div>
