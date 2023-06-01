@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Post } from './post.model';
 
 @Component({
   selector: 'app-http',
@@ -10,6 +11,7 @@ import { map } from 'rxjs/operators';
 export class HttpComponent implements OnInit {
   users: any;
   url = 'https://api.github.com/users';
+  loadedPosts: Post[] = [];
 
   constructor(
     private http: HttpClient,
@@ -30,7 +32,6 @@ export class HttpComponent implements OnInit {
       console.log(error);
     }, () => {
       console.log('completed');
-      
     });
   }
 
@@ -59,15 +60,19 @@ export class HttpComponent implements OnInit {
 
   // http GET with subscribe
   fetchPosts() {
-    this.http.get('https://dodi-web-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
-    .pipe(map((responseData: { [x: string]: any; }) => {
-      const postsArray = [];
+    this.http.get<{ [key: string]: Post} >('https://dodi-web-default-rtdb.europe-west1.firebasedatabase.app/posts.json')
+    .pipe(map(responseData => {
+      const postsArray: Post[] = [];
       for (const key in responseData) {
-        postsArray.push({ ...responseData[key], id: key });
+        if(responseData.hasOwnProperty(key)) {
+          postsArray.push({ ...responseData[key], id: key });
+        }
       }
+      return postsArray;
     }))
     .subscribe(posts => {
-      console.log(posts);
+      // console.log(posts);
+      this.loadedPosts = posts;
     });
   }
 

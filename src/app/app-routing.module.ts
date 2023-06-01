@@ -11,6 +11,7 @@ import { LifecycleHooksComponent } from './components/features/lifecycle-hooks/l
 import { RouteParamsDetailComponent } from './components/features/route-params/route-params-detail/route-params-detail.component';
 import { RouteParamsComponent } from './components/features/route-params/route-params.component';
 import { TestComponent } from './components/features/test/test.component';
+import { UnitTestsComponent } from './components/features/unit-tests/unit-tests.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
     { path: 'test', component: TestComponent },
     { path: 'javascript', component: JavascriptComponent },
     { path: 'callbacks', component: CallbacksComponent },
+    { path: 'unit-tests', component: UnitTestsComponent },
   ] },
   { path: 'guards', loadChildren: () => import('./components/guards/guards/guards.module').then(m => m.GuardsModule), resolve: {perfumes: PerfumeResolveService} },
   { path: 'forms', component: FormsComponent },

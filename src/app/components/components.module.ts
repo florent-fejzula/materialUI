@@ -39,6 +39,7 @@ import { TestComponent } from './features/test/test.component';
 import { HttpComponent } from './features/http/http.component';
 import { JavascriptComponent } from './features/javascript/javascript.component';
 import { CallbacksComponent } from './features/callbacks/callbacks.component';
+import { UnitTestsComponent } from './features/unit-tests/unit-tests.component';
 
 const components = [
   DialogExampleComponent,
@@ -68,11 +69,16 @@ const components = [
   ParentOneChildTwoComponent,
   ParentTwoComponent,
   ParentTwoChildOneComponent,
-  ParentTwoChildTwoComponent
+  ParentTwoChildTwoComponent,
+  TestComponent,
+  HttpComponent,
+  JavascriptComponent,
+  CallbacksComponent,
+  UnitTestsComponent
 ];
 
 @NgModule({
-  declarations: [components, TestComponent, HttpComponent, JavascriptComponent, CallbacksComponent],
+  declarations: [components],
   imports: [
     CommonModule,
     MaterialModule,

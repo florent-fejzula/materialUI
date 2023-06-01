@@ -67,7 +67,7 @@
               "namedChunks": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -94,47 +94,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
-          }
-        }
-      }
-    },
-    "dodiLib": {
-      "projectType": "library",
-      "root": "projects/dodi-lib",
-      "sourceRoot": "projects/dodi-lib/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/dodi-lib/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/dodi-lib/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/dodi-lib/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/dodi-lib/src/test.ts",
-            "tsConfig": "projects/dodi-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/dodi-lib/karma.conf.js"
           }
         }
       }
